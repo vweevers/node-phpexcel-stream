@@ -9,11 +9,14 @@ environment:
     - nodejs_version: 0.10
 
 install:
-  - cinst php
+  - cinst OpenSSL.Light -y
+  - SET PATH=C:\Program Files\OpenSSL;%PATH%
+  - cinst php -y
   - cd c:\tools\php
   - copy php.ini-production php.ini
   - echo date.timezone="UTC" >> php.ini
   - echo extension_dir=ext >> php.ini
+  - echo extension=php_openssl.dll >> php.ini
   - echo extension=php_mbstring.dll >> php.ini
   - echo extension=php_sqlite3.dll >> php.ini
   - SET PATH=C:\tools\php;%PATH%
@@ -21,6 +24,7 @@ install:
   - php -r "readfile('http://getcomposer.org/installer');" | php
   - echo @php "%~dp0composer.phar" %*>composer.bat
   - ps: Install-Product node $env:nodejs_version
+  - npm install tape -g
   - npm install
 
 test_script:
