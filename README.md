@@ -2,7 +2,7 @@
 
 **Memory-efficient spreadsheet to CSV converter. Won't make you love PHP, but it handles big files well and supports 8 different file formats.**
 
-[![npm status](http://img.shields.io/npm/v/phpexcel-stream.svg?style=flat-square)](https://www.npmjs.org/package/phpexcel-stream) [![Travis build status](https://img.shields.io/travis/vweevers/phpexcel-stream.svg?style=flat-square&label=travis)](http://travis-ci.org/vweevers/phpexcel-stream) [![AppVeyor build status](https://img.shields.io/appveyor/ci/vweevers/phpexcel-stream.svg?style=flat-square&label=appveyor)](https://ci.appveyor.com/project/vweevers/phpexcel-stream) [![Dependency status](https://img.shields.io/david/vweevers/phpexcel-stream.svg?style=flat-square)](https://david-dm.org/vweevers/phpexcel-stream)
+[![npm status](http://img.shields.io/npm/v/phpexcel-stream.svg?style=flat-square)](https://www.npmjs.org/package/phpexcel-stream) [![Travis build status](https://img.shields.io/travis/vweevers/node-phpexcel-stream.svg?style=flat-square&label=travis)](http://travis-ci.org/vweevers/node-phpexcel-stream) [![AppVeyor build status](https://img.shields.io/appveyor/ci/vweevers/node-phpexcel-stream.svg?style=flat-square&label=appveyor)](https://ci.appveyor.com/project/vweevers/node-phpexcel-stream) [![Dependency status](https://img.shields.io/david/vweevers/phpexcel-stream.svg?style=flat-square)](https://david-dm.org/vweevers/phpexcel-stream)
 
 ## example
 
