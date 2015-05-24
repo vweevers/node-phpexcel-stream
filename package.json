@@ -1,0 +1,41 @@
+{
+  "name": "phpexcel-stream",
+  "version": "1.0.0",
+  "description": "Memory-efficient spreadsheet to CSV converter",
+  "main": "index.js",
+  "bin": {
+    "phpexcel-stream": "index.js"
+  },
+  "scripts": {
+    "test": "tape test.js",
+    "postinstall": "composer install --no-dev"
+  },
+  "dependencies": {
+    "concat-stream": "~1.4.8",
+    "cross-spawn": "~0.4.0",
+    "duplexify": "~3.4.0",
+    "osenv": "~0.1.1"
+  },
+  "devDependencies": {
+    "csv-parser": "~1.6.0",
+    "jsonstream": "~1.0.3",
+    "tape": "~4.0.0"
+  },
+  "keywords": [
+    "spreadsheet",
+    "csv",
+    "excel",
+    "xls",
+    "xlsx",
+    "ods",
+    "phpexcel"
+  ],
+  "author": "Vincent Weevers (http://vincentweevers.nl)",
+  "license": "MIT",
+  "repository": "git://github.com/vweevers/node-phpexcel-stream",
+  "bugs": "https://github.com/vweevers/node-phpexcel-stream/issues",
+  "homepage": "https://github.com/vweevers/node-phpexcel-stream",
+  "engines": {
+    "node": ">= 0.10.0"
+  }
+}
