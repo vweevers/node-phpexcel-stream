@@ -1,6 +1,6 @@
-# phpexcel-stream
+# node-phpexcel-stream
 
-> Memory-efficient spreadsheet to CSV converter
+**Memory-efficient spreadsheet to CSV converter. Won't make you love PHP, but it handles big files well and supports 8 different file formats.**
 
 [![npm status](http://img.shields.io/npm/v/phpexcel-stream.svg?style=flat-square)](https://www.npmjs.org/package/phpexcel-stream) [![Travis build status](https://img.shields.io/travis/vweevers/phpexcel-stream.svg?style=flat-square&label=travis)](http://travis-ci.org/vweevers/phpexcel-stream) [![AppVeyor build status](https://img.shields.io/appveyor/ci/vweevers/phpexcel-stream.svg?style=flat-square&label=appveyor)](https://ci.appveyor.com/project/vweevers/phpexcel-stream) [![Dependency status](https://img.shields.io/david/vweevers/phpexcel-stream.svg?style=flat-square)](https://david-dm.org/vweevers/phpexcel-stream)
 
@@ -19,26 +19,31 @@ fs.createReadStream('air_pollution_nl.xlsx')
   .pipe( process.stdout )
 ```
 
-## `excel([extension])`
+## api
 
-Returns a duplex stream - give it a spreadsheet, get back CSV. Optionally pass `extension` as a file format hint to PHPExcel (format is autodetected otherwise).
+### `excel([extension])`
 
-## Supported file formats (by PHPExcel)
+Returns a duplex stream - give it a spreadsheet, get back CSV. Optionally pass `extension` as a file format hint to [PHPExcel](https://github.com/PHPOffice/PHPExcel) (format is autodetected otherwise).
 
-- Office Open XML (.xlsx) Excel 2007 and above
-- SpreadsheetML (.xml) Excel 2003
-- BIFF 5-8 (.xls) Excel 95 and above
+## supported file formats
+
+- Office Open XML (.xlsx) (Excel 2007 and above)
+- SpreadsheetML (.xml) (Excel 2003)
+- BIFF 5-8 (.xls) (Excel 95 and above)
 - Open Document Format/OASIS (.ods)
 - Gnumeric (GNOME)
 - HTML (why)
 - SYLK (no idea)
-- CSV (but you can and should use [csv-parser](npmjs.com/package/csv-parser) in node)
+- CSV (but you can and should use [csv-parser](https://npmjs.com/package/csv-parser) in node)
 
-## Requirements
+## requirements
 
-- PHP >= 5.2.0, must be available in `PATH`
+- PHP >= 5.4.0, must be available in `PATH`
 - [composer](https://getcomposer.org), must be available in `PATH`
-- PHP extensions: `sqlite3` (used for caching), `zip` (required for xlsx, ods or gnumeric files) and `xml`
+- PHP extensions:
+  - `sqlite3` (used for caching, keeps memory usage low while reading)
+  - `zip` (required for xlsx, ods or gnumeric files)
+  - `xml`
 
 ## install
 
