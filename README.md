@@ -12,7 +12,7 @@ var excel      = require('phpexcel-stream')
   , csvParser  = require('csv-parser')
   , JSONStream = require('jsonstream')
 
-fs.createReadStream('air_pollution_nl.xlsx')
+fs.createReadStream('test/air_pollution_nl.xlsx')
   .pipe( excel() )
   .pipe( csvParser() )
   .pipe( JSONStream.stringify() )
