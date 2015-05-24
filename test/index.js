@@ -3,6 +3,7 @@ var test       = require('tape')
   , fs         = require('fs')
   , csvParser  = require('csv-parser')
   , concat     = require('concat-stream')
+  , through2   = require('through2').obj
 
 test('functional', function(t){
   t.plan(1)
@@ -13,6 +14,17 @@ test('functional', function(t){
   fs.createReadStream(file)
     .pipe( excel() )
     .pipe( csvParser() )
+
+    // Ignore tiny rounding differences
+    .pipe( through2(function(obj, _, next){
+      for(var k in obj) {
+        var val = obj[k]
+        if (!isNaN(val)) obj[k] = (+val).toFixed(2)
+      }
+
+      next(null, obj)
+    }))
+
     .pipe( concat(function(data){
       t.deepEquals(data, expected)
     }))
