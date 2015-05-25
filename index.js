@@ -13,7 +13,8 @@ module.exports = function (opts) {
   var writer = fs.createWriteStream(tmp)
   
   writer.on('close', function () {
-    var child = spawn('php', ['stream.php', tmp])
+    var script = path.resolve(__dirname, 'stream.php')    
+      , child = spawn('php', [script, tmp])
 
     duplex.setReadable(child.stdout)
 
