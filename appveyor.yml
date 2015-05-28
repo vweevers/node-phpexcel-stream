@@ -18,6 +18,7 @@ install:
   - cd C:\phpexcel-stream
   - ps: Install-Product node $env:nodejs_version
   - set CI=true
+  - npm i -g tape
   - npm install
 
 test_script:
