@@ -39,11 +39,6 @@ Returns a duplex stream - give it a spreadsheet, get back CSV. Optionally pass `
 ## requirements
 
 - PHP >= 5.4.0, must be available in `PATH`
-- [composer](https://getcomposer.org), must be available in `PATH`
-- PHP extensions:
-  - `sqlite3` (used for caching, keeps memory usage low while reading)
-  - `zip` (required for xlsx, ods or gnumeric files)
-  - `xml`
 
 ## install
 

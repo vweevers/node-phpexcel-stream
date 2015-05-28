@@ -4,6 +4,7 @@ var test       = require('tape')
   , csvParser  = require('csv-parser')
   , concat     = require('concat-stream')
   , through2   = require('through2').obj
+  , equal      = require('deep-equal')
 
 test('functional', function(t){
   t.plan(1)
@@ -12,7 +13,9 @@ test('functional', function(t){
   var expected = require('./air_pollution_nl.json')
 
   fs.createReadStream(file)
-    .pipe( excel() )
+    .pipe( excel() ).on('error', function(err){
+      throw err
+    })
     .pipe( csvParser() )
 
     // Ignore tiny rounding differences
@@ -26,6 +29,6 @@ test('functional', function(t){
     }))
 
     .pipe( concat(function(data){
-      t.deepEquals(data, expected)
+      t.ok(equal(data, expected), 'equal')
     }))
 })

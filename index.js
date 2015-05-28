@@ -5,6 +5,18 @@ var fs        = require('fs')
   , spawn     = require('cross-spawn')
   , duplexify = require('duplexify')
 
+// Assert PHP is available
+var result = spawn.sync('php', ['-r', 'echo ini_get("extension_dir");'])
+if (result.status!==0) throw new Error('Could not find PHP');
+
+// Get the extension dir from default php.ini
+var ext = result.stdout.toString().trim()
+  , config = __dirname + path.sep + 'build'
+  , phar = config + path.sep + 'stream.phar'
+
+// Use custom php.ini with an additional configuration directive
+var args = ['-c', config, '-d', 'extension_dir='+ext, phar]
+
 module.exports = function (opts) {
   var tmp = path.join(osenv.tmpdir(), '_'+Date.now())
 
@@ -13,8 +25,7 @@ module.exports = function (opts) {
   var writer = fs.createWriteStream(tmp)
   
   writer.on('close', function () {
-    var script = path.resolve(__dirname, 'stream.php')    
-      , child = spawn('php', [script, tmp])
+    var child = spawn('php', args.concat(tmp))
 
     duplex.setReadable(child.stdout)
 

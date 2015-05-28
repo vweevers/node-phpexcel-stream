@@ -3,6 +3,9 @@
   "license": "MIT",
   "authors": [{"name":"Vincent Weevers"}],
   "require": {
-    "phpoffice/phpexcel": "~1.8.1"
+    "phpoffice/phpexcel": "1.8.1"
+  },
+  "require-dev": {
+    "kherge/box": "~2.5.2"
   }
 }
